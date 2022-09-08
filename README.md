@@ -2,6 +2,6 @@
 
 # Auteurs
 ## Enzo LOUNI
-## Auteur 2
-## Auteur 3
+## Julien ODET
+## Guth MOELLE
 ## Clovis STACHOWIAK
