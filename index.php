@@ -1,9 +1,8 @@
-<?php
-
-//s'il y a que le texte bonjour qui est affiché, alors php est activée 
-
-// si vous lisez ces commentaires alors php ne fonctionne pas
-
-echo "bonjour";
-
-?>
+<html>
+ <head>
+  <title>Test PHP</title>
+ </head>
+ <body>
+ <?php echo '<p>Bonjour le monde</p>'; ?>
+ </body>
+</html>
