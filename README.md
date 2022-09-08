@@ -1,5 +1,4 @@
 #README
-#   Teste2
 # Rappel
 ## Ne JAMAIS Push SANS Pull ! 
 # Auteurs
