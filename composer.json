@@ -1,0 +1,17 @@
+{
+    "name": "vendor/webdynamique",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Webdynamique\\": "src/",
+            "Router\\": "routes/",
+            "App\\": "app/", 
+            "Database\\": "database/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Les chouffes"
+        }
+    ],
+    "require": {}
+}
