@@ -27,7 +27,7 @@ abstract class Controller {
             $params = extract($params);
         }
         $content = ob_get_clean();
-        require VIEWS . 'layout/layout.php';
+        require VIEWS . 'layout/main.php';
         
     }
 

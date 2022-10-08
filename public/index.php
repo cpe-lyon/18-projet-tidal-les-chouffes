@@ -26,24 +26,23 @@ define('DB_PWD', 'tp');
 $router->get('/', 'App\Controllers\SiteController@index');
 
 
-/*
+
 
 //  Router Authentification et déconnexion User    
-$router->post('/login', 'App\Controllers\ListController@loginPost');
-$router->get('/logout', 'App\Controllers\ListController@logout');
+//  $router->post('/login', 'App\Controllers\SiteController@loginPost');
+//  $router->get('/logout', 'App\Controllers\SiteController@logout');
+
+
 
 //  Router Inscription User 
-$router->get('/posts/:id', 'App\Controllers\SiteController@inscription');
+//  $router->get('/posts/:id', 'App\Controllers\SiteController@inscription');
 
 
 //  Router Recherche et filtrage    
-$router->get('/recherche', 'App\Controllers\ListController@recherche');
-$router->get('/filtrage', 'App\Controllers\ListController@filtrage');
-$router->get('/motCle', 'App\Controllers\ListController@motCle');
+$router->get('/recherche', 'App\Controllers\SiteController@recherche');
+$router->get('/filtrage', 'App\Controllers\SiteController@filtrage');
+//  $router->get('/motCle', 'App\Controllers\SiteController@motCle');
 
-
-
-*/
 
 
 try {

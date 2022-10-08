@@ -1,13 +1,15 @@
 <?php
 
 
-
 namespace App\Controllers;
-
+ 
 use App\Models\Pathologie;
 
+
+
 class SiteController extends Controller { 
-    
+
+
 
 
 
@@ -18,23 +20,50 @@ class SiteController extends Controller {
     {  
         // $this->isNotAdmin();
 
-        // $pathologie = new Pathologie($this->getDB()); 
-        // $pathologis = $pathologie->patho();
+        // $data = new Data($this->getDB()); 
+        // $datas = $data->find();
 
-    return $this->view('pages.index', /* compact('pathologis') */ ); 
+        return $this->view('pages.index');  // , compact('datas')
+    }
+
+
+
+
+    /**
+     * @Route("/recherche")
+    */
+    public function recherche()
+    {  
+        // $this->isNotAdmin();
+
+        // $recherche = new Recherche($this->getDB()); 
+        // $recherches = $recherche->find();
+
+        return $this->view('pages.recherche');  // , compact('recherche')
     }
 
 
     /**
-     * @Route("/post")
+     * @Route("/filtrage")
     */
-    public function inscription(int $id)
+    public function filtrage()
     {
-        
+        return $this->view('pages.filtrage');
+    }
+
+
+
+
+    /**
+     * @Route("/inscription")
+    */
+    public function inscription()
+    {
         return $this->view('pages.inscription');
     }
 
     
+
 
     /**
      * @Route("/forgotpwd")
@@ -46,7 +75,7 @@ class SiteController extends Controller {
 
 
 
-
 }
+
 
 ?>

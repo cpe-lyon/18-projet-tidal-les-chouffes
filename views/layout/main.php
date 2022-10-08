@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
 
-        Reporting DT Solution | 
+        Assopuncture | 
 		<?php 
             if($_GET['url']=='/') { echo "Accueil"; } 
         ?>
