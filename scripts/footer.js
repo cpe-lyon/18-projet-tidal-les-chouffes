@@ -9,9 +9,9 @@ $(function() {
                 `).join("")}
             </div>
             <div>
-                <a href="index.html" class="footer__brand">
-                    <img src="images/logo.png" alt="Logo de l'agence"/>
-                    <span>voyagice</span>
+                <a href="index.php" class="footer__brand">
+                    <img src="images/logo.png" alt="Logo de l'association"/>
+                    <span>Assopuncture</span>
                 </a>
                 <sppan>© Copyright - tous droits réservés</span>
             </div>
