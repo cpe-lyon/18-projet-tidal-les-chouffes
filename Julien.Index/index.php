@@ -6,16 +6,16 @@
     <title>Assopuncture</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="images/favicon.ico" />
-    <link href="styles/index.css" rel="stylesheet" />
-    <link href="styles/global.css" rel="stylesheet" />
+    <link href="public/css/index.css" rel="stylesheet" />
+    <link href="public/css/global.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!--JQuery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!--FontAwesome-->
     <script src="https://kit.fontawesome.com/343e5ac853.js" crossorigin="anonymous"></script>
     <!--Import components-->
-    <script src="scripts/header.js"></script>
-    <script src="scripts/footer.js"></script>
+    <script src="public/js/header.js"></script>
+    <script src="public/js/footer.js"></script>
 </head>
 
 <body>
