@@ -5,19 +5,12 @@
     box-shadow: none;
 }
 
-.header.popOut {
-    position: fixed;
-    background: white;
-    color: black;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-}
-
 .hero {
     position: relative;
-    height: 60vh;
+    margin-bottom: 15px;
+    height: 38vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     background-image: url("../images/hero.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -32,24 +25,14 @@
 
 .filters {
     width: 100%;
-    min-height: 225px;
     transform: translateY(-50%);
-    padding: 4rem 8rem;
+    padding: 2rem 3rem;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 75px;
-    grid-row-gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 100px;
     background: white;
     border-radius: 32px;
     box-shadow: 0 12px 12px rgba(0, 0, 0, 0.1);
-}
-
-@media screen and (max-width: 768px) {
-    .filters {
-        padding: 2rem;
-        grid-template-columns: repeat(1, 1fr);
-    }
 }
 
 .filter {
@@ -57,13 +40,4 @@
     flex-direction: column;
     justify-content: space-between;
     font-size: 1.2rem;
-}
-
-.content {
-    min-height: 50vh;
-    display: grid;
-    grid-auto-rows: 325px;
-    grid-template-columns: repeat(auto-fill, 400px);
-    justify-content: center;
-    grid-gap: 4rem;
 }
