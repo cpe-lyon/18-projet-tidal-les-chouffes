@@ -1,7 +1,11 @@
 const routes = [
     {
-        url: "index.php",
+        url: "/",
         name: "Accueil"
+    },
+    {
+        url: "filtrage",
+        name: "Filtrage"  
     }
 ];
 
