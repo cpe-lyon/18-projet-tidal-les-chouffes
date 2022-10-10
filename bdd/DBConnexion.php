@@ -10,14 +10,16 @@ class DBConnexion {
 
     private $dbname;
     private $host;
+    private $port;
     private $username;
     private $password;
     private $pdo;
 
-    public function __construct(string $dbname, string $host, string $username, string $password)
+    public function __construct(string $dbname, string $host, int $port, string $username, string $password)
     {
         $this->dbname = $dbname;
         $this->host = $host;
+        $this->port = $port;
         $this->username = $username;
         $this->password = $password;
     }
@@ -25,17 +27,20 @@ class DBConnexion {
     public function getPDO(): PDO
     {
 
+        // dsn : Data Source Name
+        $dsn = "pgsql:host={$this->host};port={$this->port};dbname={$this->dbname};user=$this->username;password=$this->password";
 
-        // try{     isset(
-        return $this->pdo ?? $this->pdo = new PDO("mysql:dbname={$this->dbname};host={$this->host}", $this->username, $this->password, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET CHARACTER SET UTF8'
-        ]);
-        /* }
-        catch (PDOException $e)
-        {
-            printf("Impossible de se connecter au serveur : %s\n", $e->getMessage());
-        } */
+        try {
+            
+            return $this->pdo ?? $this->pdo = new PDO($dsn);
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        
     }
+
+
+
 }

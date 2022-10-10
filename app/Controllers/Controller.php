@@ -8,13 +8,13 @@ abstract class Controller {
 
     protected $bdd;
 
-    public function __construct( /* DBConnexion $bdd */ )
+    public function __construct(DBConnexion $bdd)
     {
         /* if (session_status() === PHP_SESSION_NONE) {
            session_start();
         } */
 
-        // $this->bdd = $bdd;
+        $this->bdd = $bdd;
     } 
 
     protected function view(string $path, array $params = null)
@@ -31,10 +31,10 @@ abstract class Controller {
         
     }
 
-    /* protected function getDB()
+    protected function getDB()
     {
         return $this->bdd;
-    }  */
+    }  
 
 
     /*

@@ -11,12 +11,12 @@ $router = new Router($_GET['url']);
 define('VIEWS', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR);
 define('SCRIPTS', dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR);
 
-/*
+// Config DBB
 define('DB_NAME', 'acudb');
-define('DB_HOST', 'localhost'); // localhost:50080/pgadmin4/
+define('DB_HOST', 'localhost'); 
+define('DB_PORT', 5432);
 define('DB_USER', 'pgtp');
 define('DB_PWD', 'tp');
-*/
 
 
 
