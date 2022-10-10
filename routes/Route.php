@@ -35,7 +35,7 @@ class Route {
     public function execute()
     {
         $params = explode('@', $this->action);
-        $controller = new $params[0](new DBConnexion(DB_NAME, DB_HOST, DB_USER, DB_PWD)); 
+        $controller = new $params[0](new DBConnexion(DB_NAME, DB_HOST, DB_PORT, DB_USER, DB_PWD)); 
         $method = $params[1];
 
         return isset($this->matches[1]) ? $controller->$method($this->matches[1]) : $controller->$method();

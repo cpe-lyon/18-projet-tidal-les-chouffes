@@ -5,12 +5,7 @@ namespace App\Controllers;
  
 use App\Models\Pathologie;
 
-
-
 class SiteController extends Controller { 
-
-
-
 
 
     /**
@@ -20,10 +15,11 @@ class SiteController extends Controller {
     {  
         // $this->isNotAdmin();
 
-        // $data = new Data($this->getDB()); 
-        // $datas = $data->find();
+        $patho = new Pathologie($this->getDB()); 
+        $pathos = $patho->patho(); 
+        
 
-        return $this->view('pages.index');  // , compact('datas')
+    return $this->view('pages.index', compact('pathos') );  
     }
 
 

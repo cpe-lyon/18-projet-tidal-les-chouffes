@@ -4,7 +4,7 @@
 
 
     <!-- Inclure Menu de Navigation -->
-    <?php include("../views/layout/header.inc.php"); ?>
+    <?php include("../views/layout/header.inc.php"); ?> 
 
 
     
@@ -23,6 +23,33 @@
         </ul>
 
     </section>
+
+
+    <section id="patho">
+
+         <!-- table-bordered -->
+        <table class="table table table-striped table-hover text-center" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th> ID Pathologie </th>
+                    <th> Decsription Pathologie </th>
+                </tr>
+            </thead>
+                                    
+            <tbody>
+                <?php foreach ($params['pathos'] as $patho) : ?>
+                    <tr> 
+                        <td><?= $patho->idp ?></td>
+                        <td><?= $patho->desc ?></td>
+                        
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+    </section>
+
+
+   
 
 
 
