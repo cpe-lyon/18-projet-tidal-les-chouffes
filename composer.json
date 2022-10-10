@@ -1,0 +1,18 @@
+{
+    "name": "vendor/webdynamique",
+    "description": "Projet TIDAL LES CHOUFFES - CPE Lyon",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Webdynamique\\": "src/",
+            "Router\\": "routes/",
+            "App\\": "app/", 
+            "Database\\": "bdd/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Les Chouffes"
+        }
+    ],
+    "require": {}
+}
