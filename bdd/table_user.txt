@@ -1,0 +1,28 @@
+
+
+DROP TABLE IF EXISTS public.users;
+CREATE TABLE public.users (
+  idU INTEGER NOT NULL, -- AUTO_INCREMENT,
+  username character varying(20) 
+	        COLLATE pg_catalog."en_US"
+	        NOT NULL,
+  pwd character varying(300) 
+	        COLLATE pg_catalog."en_US" 
+          NOT NULL,
+  CONSTRAINT PK_users PRIMARY KEY (idU)
+);
+COMMENT ON TABLE public.users
+  IS 'Users';
+COMMENT ON COLUMN public.users.idU
+  IS 'Clé primaire (id) Utilisteur';
+COMMENT ON COLUMN public.users.username
+  IS 'Username utilisateur';
+COMMENT ON COLUMN public.users.pwd 
+  IS 'Password utilisateur';
+
+
+
+INSERT INTO public.users (idU, username, pwd) VALUES
+(1, 'admin', 'azerty'),
+(2, 'client', '1234')
+;
