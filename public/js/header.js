@@ -6,6 +6,14 @@ const routes = [
     {
         url: "filtrage",
         name: "Filtrage"  
+    },
+    {
+        url: "loginGet",
+        name: "Connexion"  
+    },
+    {
+        url: "inscription",
+        name: "Inscription"  
     }
 ];
 

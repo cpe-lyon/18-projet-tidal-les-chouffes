@@ -19,6 +19,7 @@ define('DB_USER', 'pgtp');
 define('DB_PWD', 'tp');
 
 
+// sudo tail -F /var/log/apache2/error.log
 
 //  Router Accueil    
 
@@ -29,19 +30,21 @@ $router->get('/', 'App\Controllers\SiteController@index');
 
 
 //  Router Authentification et déconnexion User    
-//  $router->post('/login', 'App\Controllers\SiteController@loginPost');
-//  $router->get('/logout', 'App\Controllers\SiteController@logout');
+$router->get('/loginGet', 'App\Controllers\SiteController@login'); 
+$router->post('/loginPost', 'App\Controllers\SiteController@loginPost');
+$router->get('/logout', 'App\Controllers\SiteController@logout');
 
 
 
 //  Router Inscription User 
-//  $router->get('/posts/:id', 'App\Controllers\SiteController@inscription');
+$router->get('/inscription', 'App\Controllers\SiteController@inscription');
+$router->post('/inscriptionUser', 'App\Controllers\SiteController@inscriptionUser');
 
 
 //  Router Recherche et filtrage    
 $router->get('/recherche', 'App\Controllers\SiteController@recherche');
 $router->get('/filtrage', 'App\Controllers\SiteController@filtrage');
-//  $router->get('/motCle', 'App\Controllers\SiteController@motCle');
+$router->get('/recherchemotCle', 'App\Controllers\SiteController@recherchemotCle');
 
 
 

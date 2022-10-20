@@ -4,6 +4,8 @@
 namespace App\Controllers;
  
 use App\Models\Pathologie;
+use App\Models\User;
+use App\Validation\Secure;
 
 class SiteController extends Controller { 
 
@@ -17,10 +19,131 @@ class SiteController extends Controller {
 
         $patho = new Pathologie($this->getDB()); 
         $pathos = $patho->patho(); 
+
+        // var_dump($pathos);
         
 
-    return $this->view('pages.index', compact('pathos') );  
+    return $this->view('pages.index' , compact('pathos') );  
     }
+
+
+
+    /**
+     * @Route("/loginGet")
+    */
+    public function login()
+    {
+        return $this->view('auths.login');
+    }
+
+
+
+    /**
+     * @Route("/loginPost")
+    */
+    public function loginPost() // Fonction qui traite la logique des données Page login
+    {
+
+        
+        /*  $validator = new Validator($_POST);
+        $errors = $validator->validate([
+            'username' => ['required', 'min:3'],
+            'password' => ['required']
+        ]);
+
+        if ($errors) {
+            $_SESSION['errors'][] = $errors;
+            header('Location: /loginGet');
+            exit;
+        }       */
+
+
+        $login = new User($this->getDB()); 
+        
+
+        // $secu = new Secure($_POST);
+    
+       
+        $user = $login->getByUsername($_POST['username']);     // user $validator->secure()
+
+        
+        
+        $pass = $_POST['password'];  // $validator->secure();
+
+        // Déclaration des constantes
+        /* define('PREFIX_SALT', 'asso'); 
+        define('SUFFIX_SALT', 'puncture');
+        $hashSecure = md5(PREFIX_SALT."$pass".SUFFIX_SALT); */
+        
+        if ($pass == $user->pwd) {  // $hashSecure
+
+           return header("Location: /recherchemotCle?success=true");
+
+            $_SESSION['user'] = (int) $user->idU;
+            $_SESSION['name'] = (string) $user->username;
+
+
+       } else {
+            
+            /* $errors = 0;
+            $_SESSION['incorrect'] = $errors; */
+            return header('Location: /loginGet');
+        } 
+
+    }
+
+
+    
+
+    /**
+     * @Route("/inscription")
+    */
+    public function inscription()
+    {
+        return $this->view('auths.inscription');
+    }
+
+
+
+    /**
+     * @Route("/inscriptionUser")
+    */
+    public function inscriptionUser()  
+    {
+        
+        
+        $user = new User($this->getDB());
+
+        $login = $_GET["username"];     // $verif->secure()       
+        $pwd = $_GET["password"];             // $verif->secure()       
+
+        // Déclaration des constantes
+        define('PREFIX_SALT', 'asso'); 
+        define('SUFFIX_SALT', 'puncture');
+        $hashpwd = md5(PREFIX_SALT."$pwd".SUFFIX_SALT);
+
+        $result = $user->createUser($login, $hashpwd);
+
+        // var_dump($result);
+
+        /* if($result){
+            // $inscrit = 1;
+            // $_SESSION['inscrit'] = $inscrit;
+            header('Location: /inscription');
+            exit;
+        } //    elseif ($result=='erreur') {
+            $inscrit = 0;
+            $_SESSION['inscrit'] = $inscrit;
+            header('Location: /inscription');
+            exit;
+        }   */
+
+
+    }
+
+
+
+
 
 
 
@@ -38,6 +161,7 @@ class SiteController extends Controller {
         return $this->view('pages.recherche');  // , compact('recherche')
     }
 
+    
 
     /**
      * @Route("/filtrage")
@@ -48,26 +172,27 @@ class SiteController extends Controller {
     }
 
 
-
-
     /**
-     * @Route("/inscription")
+     * @Route("/recherchemotCle")
     */
-    public function inscription()
+    public function recherchemotCle()
     {
-        return $this->view('pages.inscription');
+        return $this->view('pages.recherchemotCle');
     }
 
     
 
-
     /**
-     * @Route("/forgotpwd")
+     * @Route("/logout")
     */
-    public function forgotpwd()
-    {  
-        return $this->view('errors.forgotpwd');
+    public function logout()
+    {
+        session_destroy();
+
+        return header('Location: /loginGet');
     }
+
+
 
 
 
