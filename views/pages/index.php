@@ -2,10 +2,6 @@
 <div class="container-fluid">
 
 
-
-    <!-- Inclure Menu de Navigation 
-    < include("../views/layout/header.inc.php"); ?> -->
-
   
     <section class="hero">
         <div id="header"></div>
@@ -34,6 +30,17 @@
             </label>
         </div>
     </section>
+
+
+
+    <?php if (isset($_SESSION['name'])):             
+            $name = $_SESSION['name'];
+    ?>        
+    <?php endif ?> 
+
+    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo''.$name; ?> </span>
+
+
 
     <div class="container-fluid">
         
@@ -65,12 +72,6 @@
 
     
     <div id="footer"></div>
-
-    
-
-
-    <!-- Inclure le Footer 
-    < include("../views/layout/footer.inc.php"); ?>     -->
 
 
     

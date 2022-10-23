@@ -22,8 +22,12 @@ class SiteController extends Controller {
 
         // var_dump($pathos);
         
-
-    return $this->view('pages.index' , compact('pathos') );  
+        /* if ($pathos==false) {
+            return $this->view('errors.404');
+        } else {
+            return $this->view('pages.index' , compact('pathos') );
+        } */
+        return $this->view('pages.index' , compact('pathos') );  
     }
 
 
@@ -77,10 +81,15 @@ class SiteController extends Controller {
         
         if ($pass == $user->pwd) {  // $hashSecure
 
-           return header("Location: /recherchemotCle?success=true");
+            
 
+            $_SESSION['auth'] = true;
             $_SESSION['user'] = (int) $user->idU;
             $_SESSION['name'] = (string) $user->username;
+
+            // var_dump((string) $user->username);
+
+            return header("Location: /recherchemotCle?success=true");
 
 
        } else {

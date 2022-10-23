@@ -10,9 +10,9 @@ abstract class Controller {
 
     public function __construct(DBConnexion $bdd)
     {
-        /* if (session_status() === PHP_SESSION_NONE) {
+        if (session_status() === PHP_SESSION_NONE) {
            session_start();
-        } */
+        }
 
         $this->bdd = $bdd;
     } 
