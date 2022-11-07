@@ -32,45 +32,69 @@
     </section>
 
 
+    <div class="container-fluid">	
+        <div class="col">
 
-    <?php if (isset($_SESSION['name'])):             
-            $name = $_SESSION['name'];
-    ?>        
-    <?php endif ?> 
+            <div class="card border-dark">
 
-    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo''.$name; ?> </span>
+                <!-- <img src="https://cdn.iconscout.com/icon/free/png-256/gallery-187-902099.png" class="card-img-top img-fluid" alt="..."> -->
+                <div class="card-body">
+                    <?php foreach ($params['pathos'] as $patho) : ?>
+                        <h5 class="card-title"> <?= ucfirst($patho->desc) ?> </h5>
+                        <p class="card-text"> <?= $patho->idp ?> </p>
+                    <?php endforeach ?>  
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">Méridiens : </h5>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">Symptomes : </h5>
+                    <ul class="list-group list-group-flush">
+                        <?php foreach ($params['symptpathos'] as $symptpatho) : ?>
+                            <li class="list-group-item"> <?= ucfirst($symptpatho->desc) ?> </li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 
 
 
-    <div class="container-fluid">
-        
+
+
+    <!-- <div class="container-fluid">
         <section id="patho">
-
-            <!-- table-bordered -->
+            <!- table-bordered ->
             <table class="table table table-striped table-hover text-center" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th> ID Pathologie </th>
                         <th> Decsription Pathologie </th>
                     </tr>
-                </thead>
-                                        
+                </thead>                        
                 <tbody>
-                    <?php foreach ($params['pathos'] as $patho) : ?>
+                    < foreach ($params['pathos'] as $patho) : ?>
                         <tr> 
-                            <td><?= $patho->idp ?></td>
-                            <td><?= $patho->desc ?></td>
+                            <td>< $patho->idp ?></td>
+                            <td>< $patho->desc ?></td>
                             
                         </tr>
-                    <?php endforeach ?>
+                    < endforeach ?>
                 </tbody>
             </table>
         </section>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    </div>
+    </div> -->
 
     
+
+
     <div id="footer"></div>
 
 

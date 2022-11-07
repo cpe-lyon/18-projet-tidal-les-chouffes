@@ -20,14 +20,22 @@ class SiteController extends Controller {
         $patho = new Pathologie($this->getDB()); 
         $pathos = $patho->patho(); 
 
-        // var_dump($pathos);
+        $symp = [];
         
+        foreach($pathos as $patho)
+        {   
+            
+            $symptpathos = $patho->symptpatho($patho->idp);
+            $symp = $symptpathos;
+    
+        }  
+
         /* if ($pathos==false) {
             return $this->view('errors.404');
         } else {
             return $this->view('pages.index' , compact('pathos') );
         } */
-        return $this->view('pages.index' , compact('pathos') );  
+        return $this->view('pages.index', compact('symptpathos', 'pathos'));  
     }
 
 
@@ -87,7 +95,7 @@ class SiteController extends Controller {
             $_SESSION['user'] = (int) $user->idU;
             $_SESSION['name'] = (string) $user->username;
 
-            // var_dump((string) $user->username);
+            
 
             return header("Location: /recherchemotCle?success=true");
 
@@ -123,15 +131,23 @@ class SiteController extends Controller {
         
         $user = new User($this->getDB());
 
-        $login = $_GET["username"];     // $verif->secure()       
-        $pwd = $_GET["password"];             // $verif->secure()       
+        $login = $_POST["username"];     // $verif->secure()       
+        $pwd = $_POST["password"];             // $verif->secure()       
+
+
+        
+
 
         // Déclaration des constantes
         define('PREFIX_SALT', 'asso'); 
         define('SUFFIX_SALT', 'puncture');
         $hashpwd = md5(PREFIX_SALT."$pwd".SUFFIX_SALT);
 
-        $result = $user->createUser($login, $hashpwd);
+        // var_dump($hashpwd);
+
+        $result = $user->createUser($login, $hashpwd); 
+
+        var_dump($result);
 
         // var_dump($result);
 

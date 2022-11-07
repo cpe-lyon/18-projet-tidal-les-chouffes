@@ -16,23 +16,17 @@ abstract class Model {
     public function __construct(DBConnexion $bdd)
     {
         $this->bdd = $bdd;
-    } 
-
-
-    public function all(): array    // : array permet de préciser que la fonction renvoie un array
-    {
-        return $this->query("SELECT * FROM {$this->table} ");
-
     }
 
 
 
-    /*  public function createUser(string $login, string $hashpwd)
+    
+    public function createUser(string $login, string $hashpwd)
     {
         //Requête 1 - {$this->table} - INTO
         $stmt = $this->bdd->getPDO()->prepare("INSERT users (username, pwd) VALUES (?, ?)");
         return $stmt->execute([$login, $hashpwd]);
-    }   */
+    }  
 
 
 

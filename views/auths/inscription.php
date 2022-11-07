@@ -50,7 +50,7 @@
 
             <div class=""> 
 
-                <form class="form-container" action="/inscriptionUser" method="GET">     <!-- Get POST -->
+                <form class="form-container" action="/inscriptionUser" method="POST">     <!-- GET  -->
                 
 
                     <div class="col-sm mx-auto w-50 p-3 text-center mt-5 mb-5 ">
@@ -65,9 +65,9 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="inputAdress" class="col-sm-5 col-form-label"> Mot de passe </label>
+                        <label for="inputPwd" class="col-sm-5 col-form-label"> Mot de passe </label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control adress" name="adress" id="inputAdress" >
+                            <input type="text" class="form-control adress" name="password" id="inputPwd" >
                         </div>
                     </div>
 
