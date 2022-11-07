@@ -4,10 +4,6 @@ const routes = [
         name: "Accueil"
     },
     {
-        url: "filtrage",
-        name: "Filtrage"  
-    },
-    {
         url: "loginGet",
         name: "Connexion"  
     },
