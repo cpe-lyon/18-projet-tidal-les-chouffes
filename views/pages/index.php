@@ -22,7 +22,12 @@
             </label>
             <label class="filter">
                 Méridien
-                <select name="meridien" id="meridien"> </select>
+                <select>
+                <option selected>Veuillez sélectionner</option>
+                    <?php foreach ($params['meridiens'] as $meridien) : ?>
+                        <option value="<?= $meridien->nom ?>"><?= $meridien->nom ?></option>
+                    <?php endforeach ?>
+                </select>
             </label>
             <label class="filter">
                 Type

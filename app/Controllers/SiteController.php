@@ -4,6 +4,7 @@
 namespace App\Controllers;
  
 use App\Models\Pathologie;
+use App\Models\Meridien;
 use App\Models\User;
 use App\Validation\Secure;
 
@@ -20,6 +21,9 @@ class SiteController extends Controller {
         $patho = new Pathologie($this->getDB()); 
         $pathos = $patho->patho(); 
 
+        $meridien = new Meridien($this->getDB()); 
+        $meridiens = $meridien->meridien(); 
+
         $symptp = [];
         
         foreach($pathos as $patho)
@@ -30,12 +34,14 @@ class SiteController extends Controller {
     
         }
 
+        // var_dump($meridiens);
+
         /* if ($pathos==false) {
             return $this->view('errors.404');
         } else {
             return $this->view('pages.index' , compact('pathos') );
         } */
-        return $this->view('pages.index', compact('symptp', 'pathos'));  
+        return $this->view('pages.index', compact('symptp', 'pathos', 'meridiens'));  
     }
 
 
