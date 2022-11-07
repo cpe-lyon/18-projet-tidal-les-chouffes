@@ -20,22 +20,22 @@ class SiteController extends Controller {
         $patho = new Pathologie($this->getDB()); 
         $pathos = $patho->patho(); 
 
-        $symp = [];
+        $symptp = [];
         
         foreach($pathos as $patho)
         {   
             
             $symptpathos = $patho->symptpatho($patho->idp);
-            $symp = $symptpathos;
+            array_push($symptp, $symptpathos);
     
-        }  
+        }
 
         /* if ($pathos==false) {
             return $this->view('errors.404');
         } else {
             return $this->view('pages.index' , compact('pathos') );
         } */
-        return $this->view('pages.index', compact('symptpathos', 'pathos'));  
+        return $this->view('pages.index', compact('symptp', 'pathos'));  
     }
 
 

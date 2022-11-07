@@ -52,8 +52,10 @@
                 <div class="card-body">
                     <h5 class="card-title">Symptomes : </h5>
                     <ul class="list-group list-group-flush">
-                        <?php foreach ($params['symptpathos'] as $symptpatho) : ?>
-                            <li class="list-group-item"> <?= ucfirst($symptpatho->desc) ?> </li>
+                        <?php foreach ($params['symptp'] as $symptpatho) : ?>
+                            <?php foreach ($symptpatho as $sympt) : ?>
+                                <li class="list-group-item"> <?= ucfirst($sympt->desc) ?> </li>
+                            <?php endforeach ?>
                         <?php endforeach ?>
                     </ul>
                 </div>
