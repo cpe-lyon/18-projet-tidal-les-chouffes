@@ -14,21 +14,25 @@ class SiteController extends Controller {
      * @Route("/")
     */
     public function index()
-    {  
-        // $this->isNotAdmin();
+    { 
 
         $patho = new Pathologie($this->getDB()); 
         $pathos = $patho->patho(); 
 
         $symptp = [];
+        $data = [];
         
         foreach($pathos as $patho)
         {   
             
             $symptpathos = $patho->symptpatho($patho->idp);
+
+            array_push($data, $patho->idp, $patho->desc, $symptpathos);
+
             array_push($symptp, $symptpathos);
     
         }
+        var_dump(data);
 
         /* if ($pathos==false) {
             return $this->view('errors.404');
@@ -91,7 +95,7 @@ class SiteController extends Controller {
 
             
 
-            $_SESSION['auth'] = true;
+            $_SESSION['auth'] = True;
             $_SESSION['user'] = (int) $user->idU;
             $_SESSION['name'] = (string) $user->username;
 
@@ -202,6 +206,8 @@ class SiteController extends Controller {
     */
     public function recherchemotCle()
     {
+        
+        $this->isConnect();
         return $this->view('pages.recherchemotCle');
     }
 

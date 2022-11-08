@@ -37,25 +37,16 @@ abstract class Controller {
     }  
 
 
-    /*
-    protected function isAdmin()
+    
+    protected function isConnect()
     {
-        if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
+        if (isset($_SESSION['auth']) && $_SESSION['auth'] === True) {
             return true;
         } else {
             return header('Location: /');
         }
     }
 
-    
-    protected function isNotAdmin()
-    {
-        if (isset($_SESSION['auth']) && ($_SESSION['auth'] === 0 || $_SESSION['auth'] === 2) ) {
-            return true;
-        } else {
-            return header('Location: /');
-        }
-    } */
 
        
 }
