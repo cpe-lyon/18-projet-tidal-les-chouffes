@@ -11,6 +11,7 @@ use App\Validation\Secure;
 class SiteController extends Controller { 
 
 
+
     /**
      * @Route("/")
     */
@@ -23,35 +24,31 @@ class SiteController extends Controller {
         $meridien = new Meridien($this->getDB()); 
         $meridiens = $meridien->meridien(); 
 
-        $symptp = [];
-        $data = [];
+        $listPathos = [];
+        $listSymptpathos = [];
         
         foreach($pathos as $patho)
         {   
             
             $symptpathos = $patho->symptpatho($patho->idp);
 
-            array_push($data, $patho->idp, $patho->desc, $symptpathos);
-
-            array_push($symptp, $symptpathos);
+            array_push($listPathos, $patho);
+            array_push($listSymptpathos, $symptpathos);
     
         }
-        var_dump(data);
 
-        // var_dump($meridiens);
 
-        /* if ($pathos==false) {
+        if ($pathos==false) {
             return $this->view('errors.404');
         } else {
-            return $this->view('pages.index' , compact('pathos') );
-        } */
-        return $this->view('pages.index', compact('symptp', 'pathos', 'meridiens'));  
+            return $this->view('pages.index', compact('listPathos', 'listSymptpathos', 'meridiens'));
+        }  
     }
 
 
 
     /**
-     * @Route("/loginGet")
+     * @Route("/pageLogin")
     */
     public function login()
     {
@@ -61,60 +58,38 @@ class SiteController extends Controller {
 
 
     /**
-     * @Route("/loginPost")
+     * @Route("/connexion")
     */
-    public function loginPost() // Fonction qui traite la logique des données Page login
+    public function connexion() 
     {
 
         
-        /*  $validator = new Validator($_POST);
-        $errors = $validator->validate([
-            'username' => ['required', 'min:3'],
-            'password' => ['required']
-        ]);
-
-        if ($errors) {
-            $_SESSION['errors'][] = $errors;
-            header('Location: /loginGet');
-            exit;
-        }       */
-
-
         $login = new User($this->getDB()); 
-        
-
-        // $secu = new Secure($_POST);
-    
-       
-        $user = $login->getByUsername($_POST['username']);     // user $validator->secure()
+        $verifdata = new Secure();
 
         
-        
-        $pass = $_POST['password'];  // $validator->secure();
+        $userbdd = $login->getByUsername($verifdata->secure($_POST['username']));     
+        $pass = $verifdata->secure($_POST['password']);
 
         // Déclaration des constantes
-        /* define('PREFIX_SALT', 'asso'); 
+        define('PREFIX_SALT', 'asso'); 
         define('SUFFIX_SALT', 'puncture');
-        $hashSecure = md5(PREFIX_SALT."$pass".SUFFIX_SALT); */
+        $hashSecure = md5(PREFIX_SALT."$pass".SUFFIX_SALT); 
+
+        var_dump($hashSecure);
         
-        if ($pass == $user->pwd) {  // $hashSecure
+        if ($hashSecure == $userbdd->pwd) {  
 
-            
+            $_SESSION['auth'] = true;
+            $_SESSION['user'] = (int) $userbdd->idU;
+            $_SESSION['name'] = (string) $userbdd->username;
 
-            $_SESSION['auth'] = True;
-            $_SESSION['user'] = (int) $user->idU;
-            $_SESSION['name'] = (string) $user->username;
-
-            
-
-            return header("Location: /recherchemotCle?success=true");
-
+            return header("Location: /pageRecherchemotCle?success=true");
 
        } else {
             
-            /* $errors = 0;
-            $_SESSION['incorrect'] = $errors; */
-            return header('Location: /loginGet');
+            $_SESSION['auth'] = false;
+            return header('Location: /pageLogin');
         } 
 
     }
@@ -123,9 +98,9 @@ class SiteController extends Controller {
     
 
     /**
-     * @Route("/inscription")
+     * @Route("/pageInscription")
     */
-    public function inscription()
+    public function pageInscription()
     {
         return $this->view('auths.inscription');
     }
@@ -133,77 +108,49 @@ class SiteController extends Controller {
 
 
     /**
-     * @Route("/inscriptionUser")
+     * @Route("/createUser")
     */
-    public function inscriptionUser()  
+    public function createUser()  
     {
-        
+
         
         $user = new User($this->getDB());
+        $verifdata = new Secure();
 
-        $login = $_POST["username"];     // $verif->secure()       
-        $pwd = $_POST["password"];             // $verif->secure()       
-
-
-        
-
+        $login = $verifdata->secure($_POST['username']);
+        $pwd = $verifdata->secure($_POST['password']);
 
         // Déclaration des constantes
         define('PREFIX_SALT', 'asso'); 
         define('SUFFIX_SALT', 'puncture');
         $hashpwd = md5(PREFIX_SALT."$pwd".SUFFIX_SALT);
 
-        // var_dump($hashpwd);
-
         $result = $user->createUser($login, $hashpwd); 
 
         var_dump($result);
 
-        // var_dump($result);
-
-        /* if($result){
-            // $inscrit = 1;
-            // $_SESSION['inscrit'] = $inscrit;
-            header('Location: /inscription');
+        if ($result) {
+            $_SESSION['inscrit'] = true;
+            header('Location: /pageInscription');
             exit;
-        } //    elseif ($result=='erreur') {
-            $inscrit = 0;
-            $_SESSION['inscrit'] = $inscrit;
-            header('Location: /inscription');
+        } elseif ($result=='erreur') {
+            $_SESSION['inscrit'] = false;
+            header('Location: /pageInscription');
             exit;
-        }   */
+        }   
 
 
     }
 
 
 
-
-
-
-
-
     /**
-     * @Route("/recherche")
+     * @Route("/pageRecherchemotCle")
     */
-    public function recherche()
-    {  
-        // $this->isNotAdmin();
-
-        // $recherche = new Recherche($this->getDB()); 
-        // $recherches = $recherche->find();
-
-        return $this->view('pages.recherche');  // , compact('recherche')
-    }
-
-    
-
-    /**
-     * @Route("/filtrage")
-    */
-    public function filtrage()
+    public function pageRecherchemotCle()
     {
-        return $this->view('pages.filtrage');
+        $this->isConnect();
+        return $this->view('pages.recherchemotCle');
     }
 
 
@@ -211,11 +158,17 @@ class SiteController extends Controller {
      * @Route("/recherchemotCle")
     */
     public function recherchemotCle()
-    {
-        
+    {  
         $this->isConnect();
-        return $this->view('pages.recherchemotCle');
+
+        // $recherche = new Recherche($this->getDB()); 
+        // $recherches = $recherche->find();
+
+        return $this->view('pages.recherchemotCle', compact('recherche'));   
     }
+
+
+    
 
     
 
@@ -225,8 +178,7 @@ class SiteController extends Controller {
     public function logout()
     {
         session_destroy();
-
-        return header('Location: /loginGet');
+        return header('Location: /pageLogin');
     }
 
 

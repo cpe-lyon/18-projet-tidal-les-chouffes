@@ -28,23 +28,23 @@ $router->get('/', 'App\Controllers\SiteController@index');
 
 
 
-
 //  Router Authentification et déconnexion User    
-$router->get('/loginGet', 'App\Controllers\SiteController@login'); 
-$router->post('/loginPost', 'App\Controllers\SiteController@loginPost');
+$router->get('/pageLogin', 'App\Controllers\SiteController@login'); 
+$router->post('/connexion', 'App\Controllers\SiteController@connexion');
 $router->get('/logout', 'App\Controllers\SiteController@logout');
 
 
 
 //  Router Inscription User 
-$router->get('/inscription', 'App\Controllers\SiteController@inscription');
-$router->post('/inscriptionUser', 'App\Controllers\SiteController@inscriptionUser');
+$router->get('/pageInscription', 'App\Controllers\SiteController@pageInscription');
+$router->post('/createUser', 'App\Controllers\SiteController@createUser');
 
 
-//  Router Recherche et filtrage    
-$router->get('/recherche', 'App\Controllers\SiteController@recherche');
-$router->get('/filtrage', 'App\Controllers\SiteController@filtrage');
+//  Router Recherche par mot cle    
+$router->get('/pageRecherchemotCle', 'App\Controllers\SiteController@pageRecherchemotCle');
 $router->get('/recherchemotCle', 'App\Controllers\SiteController@recherchemotCle');
+
+
 
 
 

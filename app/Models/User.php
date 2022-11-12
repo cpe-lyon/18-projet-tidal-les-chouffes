@@ -14,7 +14,6 @@ class User extends Model {
     
     public function getByUsername(string $username): User     
     {
-        
         return $this->query(" SELECT * FROM {$this->tableUsers} WHERE username = ? ", [$username], true);  
     } 
 
@@ -23,19 +22,18 @@ class User extends Model {
     public function createUser(string $login, string $hashpwd): User 
     {
 
-        parent::createUser($login, $hashpwd);
+        $id = random_int(3, 99);
 
-        /* $stmt = $this->bdd->getPDO()->prepare("INSERT {$this->tableUsers} (username, pwd) VALUES (?, ?)");
-        return $stmt->execute([$login, $hashpwd]);  */ 
+        $stmt = $this->bdd->getPDO()->prepare("INSERT INTO public.{$this->tableUsers} (idu, username, pwd) VALUES (?, ?, ?)");
+        $user = $stmt->execute([$id, $login, $hashpwd]);  
 
-        $user = $this->bdd->getPDO()->lastInsertId();
+        var_dump($user);
         
-
-        if ($user!='') {
-            return "true";
+        if (is_bool($user) === true) {
+            return true;
         } else {
             return 'erreur';
-        }   
+        }
   
     } 
 

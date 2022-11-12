@@ -26,7 +26,7 @@
             
 
             <?php 
-                if (isset($_SESSION['inscrit']) && ($_SESSION['inscrit']==1)) {
+                if (isset($_SESSION['inscrit']) && ($_SESSION['inscrit'] == true )) {
             ?>
 
             <div class='alert alert-success text-center'>
@@ -34,7 +34,7 @@
             </div>
 
             <?php
-                } elseif (isset($_SESSION['inscrit']) && ($_SESSION['inscrit']==0)) {
+                } elseif (isset($_SESSION['inscrit']) && ($_SESSION['inscrit'] == false )) {
             ?>
 
             <div class='alert alert-danger text-center'>
@@ -50,7 +50,7 @@
 
             <div class=""> 
 
-                <form class="form-container" action="/inscriptionUser" method="POST">     <!-- GET  -->
+                <form class="form-container" action="/createUser" method="POST">     <!-- GET  -->
                 
 
                     <div class="col-sm mx-auto w-50 p-3 text-center mt-5 mb-5 ">

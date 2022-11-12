@@ -4,11 +4,11 @@ const routes = [
         name: "Accueil"
     },
     {
-        url: "loginGet",
+        url: "pageLogin",
         name: "Connexion"  
     },
     {
-        url: "inscription",
+        url: "pageInscription",
         name: "Inscription"  
     }
 ];

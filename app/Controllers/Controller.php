@@ -40,7 +40,7 @@ abstract class Controller {
     
     protected function isConnect()
     {
-        if (isset($_SESSION['auth']) && $_SESSION['auth'] === True) {
+        if (isset($_SESSION['auth']) && $_SESSION['auth'] === true) {
             return true;
         } else {
             return header('Location: /');

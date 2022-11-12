@@ -39,7 +39,7 @@
 
                     <li>
                         <?php if (isset($_SESSION['auth']) and ($_SESSION['auth']==true)) { ?>
-                            <a class="dropdown-item" href="/myaccount">Action
+                            <a class="dropdown-item" href="#">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Mon Profile
                             </a>
@@ -49,25 +49,19 @@
                     <li><hr class="dropdown-divider"></li>
 
                     <li>
-                        <?php if (isset($_SESSION['auth'])): ?>
-                            <a class="dropdown-item" href="#logoutModal" data-toggle="modal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>  
+                        <?php if (isset($_SESSION['auth']) and ($_SESSION['auth']==true) ): ?>
+
+                            <!-- Button logout modal -->
+                            <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Se deconnecter
-                            </a>
+                            </button>
+
                         <?php endif ?>
                     </li>
 
                 </ul>
-                </li>
-
-                <li>
-                    <a href="/logout" >
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Se deconnecter </span>
-                    </a>
-                </li>
-
-
-                
+                </li>                
                 
             </ul>
             
@@ -75,34 +69,33 @@
         </div>
 
 
-        <!-- logout Modal HTML -->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">  Avertissement </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
 
-                    <div class="modal-body">
-                        <p> Voulez-vous vraiment vous deconnecter ? </p>
-                    </div>
-            
-                    <div class="modal-footer">
+        <!-- logout Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"> Avertissement </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> Annuler </button>
-                        
-                        <a href="/logout" >
-                            <button type="button" class="btn btn-secondary"> Vraiment </button>
-                        </a>
-                                  
-                    </div>
+            <div class="modal-body">
+                    <p> Voulez-vous vraiment vous deconnecter ? </p>
+            </div>
 
-                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Non </button>
+                <a href="/logout" >
+                    <button type="button" class="btn btn-primary"> Oui </button>
+                </a>
+            </div>
             </div>
         </div>
+        </div>
+
+
+
+
 
 
 </nav>

@@ -16,18 +16,7 @@ abstract class Model {
     public function __construct(DBConnexion $bdd)
     {
         $this->bdd = $bdd;
-    }
-
-
-
-    
-    public function createUser(string $login, string $hashpwd)
-    {
-        //Requête 1 - {$this->table} - INTO
-        $stmt = $this->bdd->getPDO()->prepare("INSERT users (username, pwd) VALUES (?, ?)");
-        return $stmt->execute([$login, $hashpwd]);
     }  
-
 
 
 
