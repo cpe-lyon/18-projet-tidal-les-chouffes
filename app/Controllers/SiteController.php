@@ -127,9 +127,8 @@ class SiteController extends Controller {
 
         $result = $user->createUser($login, $hashpwd); 
 
-        var_dump($result);
 
-        if ($result) {
+        if (is_bool($result) === true) { 
             $_SESSION['inscrit'] = true;
             header('Location: /pageInscription');
             exit;
@@ -168,9 +167,6 @@ class SiteController extends Controller {
     }
 
 
-    
-
-    
 
     /**
      * @Route("/logout")

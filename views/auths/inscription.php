@@ -33,6 +33,12 @@
                 <p> Inscrit ! </p>
             </div>
 
+            <div class="text-dark mx-auto text-center mt-3 mb-3">                   
+                <div class="col-xl-4 col-md-4 col-sm-4">
+                    <a href="/pageLogin" class="text-dark" > Se connecter </a> 
+                </div>
+            </div>
+
             <?php
                 } elseif (isset($_SESSION['inscrit']) && ($_SESSION['inscrit'] == false )) {
             ?>
@@ -50,7 +56,7 @@
 
             <div class=""> 
 
-                <form class="form-container" action="/createUser" method="POST">     <!-- GET  -->
+                <form class="form-container" action="/createUser" method="POST">     
                 
 
                     <div class="col-sm mx-auto w-50 p-3 text-center mt-5 mb-5 ">
@@ -72,12 +78,9 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary text-dark mt-5 mb-5"> Se connecter </button>
+                    <button type="submit" class="btn btn-primary text-dark mt-5 mb-5"> S'inscrire </button>
 
-                    
-
-                    
-                    
+                      
 
                 </form>
 
