@@ -13,6 +13,31 @@ const routes = [
     }
 ];
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+username = capitalizeFirstLetter(username);
+
+if(username != '') {
+    routes.pop();
+    routes.pop();
+    routes.push({
+        url: "logout",
+        name: username
+    });
+}
+// else {
+//     routes.push({
+//         url: "pageLogin",
+//         name: "Connexion"  
+//     });
+//     routes.push({
+//         url: "pageInscription",
+//         name: "Inscription"  
+//     });
+// }
+
 $(function () {
     $("#header").replaceWith(`
         <div class="header inset ${$(this).className}">
