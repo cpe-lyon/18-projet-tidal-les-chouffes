@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+/*namespace App\Models;
 
 use App\Models\Model;
 
@@ -13,6 +13,6 @@ class Symptome extends Model {
         return $this->query(" SELECT desc FROM {$this->table} ORDER BY 1 ASC " );
     }
 }
-
+*/
 
 ?>

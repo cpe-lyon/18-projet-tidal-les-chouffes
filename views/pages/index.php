@@ -21,12 +21,7 @@
         <div class="filters" id="filters">
             <label class="filter">
                 Symptômes
-                <select>
-                <option selected>Veuillez sélectionner</option>
-                    <?php foreach ($params['symptomes'] as $symptome) : ?>
-                        <option value="<?= $symptome->desc ?>"><?= $symptome->desc ?></option>
-                    <?php endforeach ?>
-                </select>
+                <input type="text" placeholder="Search...">
             </label>
             <label class="filter">
                 Méridien
