@@ -6,7 +6,7 @@
     <div class="col">
 
         <div class="mx-auto w-50 p-3 text-center">
-            <p>Bienvenu sur le site Assopuncture </p>
+            <p>Bienvenue sur le site Assopuncture </p>
         </div>
 
         <div class="mx-auto w-50 p-3 text-center">
@@ -59,9 +59,13 @@
                 <form class="form-container" action="/createUser" method="POST">     
                 
 
-                    <div class="col-sm mx-auto w-50 p-3 text-center mt-5 mb-5 ">
-                        <a href="/" class="text-dark" > Retour accueil </a>
-                    </div>
+                <div class="row">
+                <div class="col-xl col-md-6 mb-5 mx-auto text-center text-gray-800"> 
+                    <a href="/" title="Accueil"> 
+                        <img src="<?= SCRIPTS . 'images' . DIRECTORY_SEPARATOR . 'logo.png' ?>" class="rounded-square img-fluid logoSize" class="img-fluid rounded" alt="Responsive logo app"/> <!-- logoSize -->
+                    </a>
+                </div>
+                </div>
 
                     <div class="form-group row mb-5">
                         <label for="inputUser" class="col-sm-5 col-form-label"> Login </label>
