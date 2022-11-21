@@ -174,7 +174,7 @@ class SiteController extends Controller {
     public function logout()
     {
         session_destroy();
-        return header('Location: /pageLogin');
+        return header('Location: /');
     }
 
 

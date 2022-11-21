@@ -4,7 +4,16 @@
 
   
     <section class="hero">
-        <div id="header"></div>
+        <div id="header">
+            <?php if (isset($_SESSION['name'])):             
+                $name = $_SESSION['name'];
+            ?>        
+            <?php endif ?> 
+            <script type="text/javascript">
+                var username = '<?php echo $name;?>';
+            </script>
+            <script type="text/javascript" src="../../public/js/header.js"></script>
+        </div>
         <div class="inset">
             <span>Bienvenue sur le site d'</span>
             <h1>Assopuncture</h1>

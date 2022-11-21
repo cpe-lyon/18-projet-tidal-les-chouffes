@@ -2,6 +2,15 @@
 <!-- Topbar Navbar -->
 <nav class="navbar navbar-expand-lg bg-light topbar mb-4 static-top shadow">
 
+        <?php if (isset($_SESSION['name'])):             
+            $name = $_SESSION['name'];
+        ?>        
+        <?php endif ?> 
+        <script type="text/javascript">
+            var username = '<?php echo $name;?>';
+        </script>
+        <script type="text/javascript" src="../../public/js/header.js"></script>
+
 
         <!-- Logo -->
         <div class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100">
