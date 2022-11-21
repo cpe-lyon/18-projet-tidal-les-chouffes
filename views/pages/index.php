@@ -1,8 +1,4 @@
-
 <div class="container-fluid">
-
-
-  
     <section class="hero">
         <div id="header">
             <?php if (isset($_SESSION['name'])):             
@@ -25,7 +21,12 @@
         <div class="filters" id="filters">
             <label class="filter">
                 Symptômes
-                <input type="text" placeholder="Search...">
+                <select>
+                <option selected>Veuillez sélectionner</option>
+                    <?php foreach ($params['symptomes'] as $symptome) : ?>
+                        <option value="<?= $symptome->desc ?>"><?= $symptome->desc ?></option>
+                    <?php endforeach ?>
+                </select>
             </label>
             <label class="filter">
                 Méridien
@@ -38,23 +39,20 @@
             </label>
             <label class="filter">
                 Type
-                <select name="type" id="type"> </select>
+                <select>
+                <option selected>Veuillez sélectionner</option>
+                    <?php foreach ($params['listPathos'] as $patho) : ?>
+                        <option value="<?= $patho->type ?>"><?= $patho->type ?></option>
+                    <?php endforeach ?>
+                </select>
             </label>
         </div>
     </section>
-
-    
-    
-
-
 
     <div class="container-fluid">
 
         <?php foreach ($params['listPathos'] as $patho) : ?>     
             <div class="col">
-
-            
-
                 <div class="card border-dark mb-5" style="width: 18rem;">
 
                     <img src="https://cdn.iconscout.com/icon/free/png-256/gallery-187-902099.png" class="card-img-top img-fluid" alt="...">
@@ -79,20 +77,9 @@
                             <?php endforeach ?>
                         <?php endforeach ?> 
                     </ul>
-
                 </div>
-
             </div> 
-
         <?php endforeach ?> 
-
     </div>
-
-    
-
-
     <div id="footer"></div>
-
-
-    
 </div>

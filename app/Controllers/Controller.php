@@ -46,7 +46,10 @@ abstract class Controller {
             return header('Location: /');
         }
     }
-
-
-       
+/*
+    public function filtersChanged()
+    {
+        return ""
+    }
+*/
 }

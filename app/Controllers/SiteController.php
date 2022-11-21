@@ -5,6 +5,7 @@ namespace App\Controllers;
  
 use App\Models\Pathologie;
 use App\Models\Meridien;
+use App\Models\Symptome;
 use App\Models\User;
 use App\Validation\Secure;
 
@@ -24,6 +25,9 @@ class SiteController extends Controller {
         $meridien = new Meridien($this->getDB()); 
         $meridiens = $meridien->meridien(); 
 
+        $symptome = new Symptome($this->getDB()); 
+        $symptomes = $symptome->symptome(); 
+
         $listPathos = [];
         $listSymptpathos = [];
         
@@ -41,7 +45,7 @@ class SiteController extends Controller {
         if ($pathos==false) {
             return $this->view('errors.404');
         } else {
-            return $this->view('pages.index', compact('listPathos', 'listSymptpathos', 'meridiens'));
+            return $this->view('pages.index', compact('listPathos', 'listSymptpathos', 'meridiens', 'symptomes'));
         }  
     }
 
@@ -170,6 +174,22 @@ class SiteController extends Controller {
         return $this->view('pages.recherchemotCle',compact('keywords'));   
     }
 
+
+
+    /**
+     * @Route("/filtersChanged")
+    */
+    /*public function filtersChanged() 
+    {
+
+        
+        $filter = new Pathologie($this->getDB()); 
+        $filters = $filter->filtersChanged();
+      
+        
+
+
+    }*/
 
 
     /**
