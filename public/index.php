@@ -42,7 +42,7 @@ $router->post('/createUser', 'App\Controllers\SiteController@createUser');
 
 //  Router Recherche par mot cle    
 $router->get('/pageRecherchemotCle', 'App\Controllers\SiteController@pageRecherchemotCle');
-$router->get('/recherchemotCle', 'App\Controllers\SiteController@recherchemotCle');
+$router->get('/recherchemotCle', 'App\Controllers\SiteController@recherchemotCle_trait');
 
 
 

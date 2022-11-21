@@ -23,6 +23,18 @@ class Pathologie extends Model {
         ON sp.ids = s.ids WHERE p.idp = $idp ORDER BY 1 ASC " ); 
     }
 
+    public function keywords(string $kc): array
+    {
+        return $this->query(" SELECT p.desc, k.name  
+        FROM {$this->table} p  
+        JOIN symptPatho pt ON p.idP = pt.idP
+        JOIN symptome s ON pt.idS = s.idS
+        JOIN keySympt ks ON s.idS = ks.idS
+        JOIN keywords k ON ks.idK = k.idK
+        WHERE k.name = '$kc'
+        ORDER BY 1 ASC " );
+    }
+
 
     
 }
