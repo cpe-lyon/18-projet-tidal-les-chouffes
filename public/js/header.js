@@ -1,9 +1,5 @@
 const routes = [
     {
-        url: "/",
-        name: "Accueil"
-    },
-    {
         url: "pageLogin",
         name: "Connexion"  
     },
@@ -23,20 +19,14 @@ if(username != '') {
     routes.pop();
     routes.pop();
     routes.push({
-        url: "logout",
+        url: "pageRecherchemotCle",
         name: username
     });
+    routes.push({
+        url: "logout",
+        name: "<i class='fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400'></i>"
+    });
 }
-// else {
-//     routes.push({
-//         url: "pageLogin",
-//         name: "Connexion"  
-//     });
-//     routes.push({
-//         url: "pageInscription",
-//         name: "Inscription"  
-//     });
-// }
 
 $(function () {
     $("#header").replaceWith(`

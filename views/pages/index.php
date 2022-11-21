@@ -1,7 +1,4 @@
 <div class="container-fluid">
-
-
-
     <section class="hero">
         <div id="header">
             <?php if (isset($_SESSION['name'])) :
@@ -14,9 +11,8 @@
             <script type="text/javascript" src="../../public/js/header.js"></script>
         </div>
         <div class="inset">
-            <span>Bienvenue sur le site d'</span>
-            <h1>Assopuncture</h1>
-            <span>Association d’acupuncteurs en médecine traditionnelle chinoise</span>
+            <h3>Bienvenue sur le site d'Assopuncture</h3>
+            <span>L'Association d’acupuncteurs en médecine traditionnelle chinoise</span>
         </div>
     </section>
 
@@ -37,7 +33,12 @@
             </label>
             <label class="filter">
                 Type
-                <select name="type" id="type"> </select>
+                <select>
+                <option selected>Veuillez sélectionner</option>
+                    <?php foreach ($params['listPathos'] as $patho) : ?>
+                        <option value="<?= $patho->type ?>"><?= $patho->type ?></option>
+                    <?php endforeach ?>
+                </select>
             </label>
         </div>
     </section>

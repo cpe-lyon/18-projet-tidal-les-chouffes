@@ -45,15 +45,6 @@
                 </a>
 
                 <ul class="dropdown-menu">
-
-                    <li>
-                        <?php if (isset($_SESSION['auth']) and ($_SESSION['auth']==true)) { ?>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Mon Profile
-                            </a>
-                        <?php } ?>  
-                    </li>
                         
                     <li><hr class="dropdown-divider"></li>
 
