@@ -19,7 +19,7 @@
             <div class="row">
 
                 <div class="col-xl col-md-6 mb-4 mx-auto text-center text-gray-800">   
-                    <p> Bienvenu sur le site Assopuncture </p>
+                    <p> Bienvenue sur le site Assopuncture </p>
                 </div>
 
             </div>

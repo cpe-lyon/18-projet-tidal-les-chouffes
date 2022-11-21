@@ -15,14 +15,14 @@
         <!-- Logo -->
         <div class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100">
             <div class="">
-                <a href="#">
+                <a href="/">
                     <img src="<?= SCRIPTS . 'images' . DIRECTORY_SEPARATOR . 'logo.png' ?>" class="rounded-square img-fluid rounded logoSize" alt="Responsive logo app"/> <!-- logoSize -->
                 </a>
             </div>
         </div>
 
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Home</a>
+            <a class="navbar-brand" href="/">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>

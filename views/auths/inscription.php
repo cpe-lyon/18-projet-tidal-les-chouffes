@@ -6,7 +6,7 @@
     <div class="col">
 
         <div class="mx-auto w-50 p-3 text-center">
-            <p>Bienvenu sur le site Assopuncture </p>
+            <p>Bienvenue sur le site Assopuncture </p>
         </div>
 
         <div class="mx-auto w-50 p-3 text-center">

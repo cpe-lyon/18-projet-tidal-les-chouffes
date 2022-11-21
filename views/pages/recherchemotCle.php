@@ -11,10 +11,7 @@
     <section class="">
 
         <p> Page Recherche Patho par mot clé </p>
-        <ul>
-            <li><a href="/">Home</a></li>
-        </ul>
-
+        
 
         <form class="text-center" method="GET" action="/recherchemotCle">
             <div class="row text-center">
