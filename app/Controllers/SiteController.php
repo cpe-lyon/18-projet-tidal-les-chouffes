@@ -152,18 +152,22 @@ class SiteController extends Controller {
         return $this->view('pages.recherchemotCle');
     }
 
-
+    
     /**
      * @Route("/recherchemotCle")
     */
-    public function recherchemotCle()
+    public function recherchemotCle_trait()
     {  
+        $verifdata = new Secure();
         $this->isConnect();
+        $recherche = $verifdata->secure($_GET['mc']);
+        
+        
 
-        // $recherche = new Recherche($this->getDB()); 
-        // $recherches = $recherche->find();
+        $patho_keyword = new Pathologie($this->getDB()); 
+        $keywords = $patho_keyword->keywords(strtolower($recherche)); 
 
-        return $this->view('pages.recherchemotCle', compact('recherche'));   
+        return $this->view('pages.recherchemotCle',compact('keywords'));   
     }
 
 
@@ -174,7 +178,7 @@ class SiteController extends Controller {
     public function logout()
     {
         session_destroy();
-        return header('Location: /pageLogin');
+        return header('Location: /');
     }
 
 
