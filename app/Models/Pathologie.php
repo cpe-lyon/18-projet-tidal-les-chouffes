@@ -16,11 +16,11 @@ class Pathologie extends Model {
 
     public function symptpatho(int $idp): array   
     {
-        return $this->query(" SELECT p.idp, s.desc FROM {$this->table} p    
-        JOIN symptpatho sp 
-        ON p.idp = sp.idp 
-        JOIN symptome s 
-        ON sp.ids = s.ids WHERE p.idp = $idp ORDER BY 1 ASC " ); 
+        return $this->query(" SELECT p.idp, s.desc, m.code FROM {$this->table} p    
+        JOIN symptpatho sp ON p.idp = sp.idp 
+        JOIN symptome s ON sp.ids = s.ids 
+        JOIN meridien m ON p.mer = m.code
+        WHERE p.idp = $idp ORDER BY 1 ASC " ); 
     }
 
     public function keywords(string $kc): array
@@ -31,7 +31,7 @@ class Pathologie extends Model {
         JOIN symptome s ON pt.idS = s.idS
         JOIN keySympt ks ON s.idS = ks.idS
         JOIN keywords k ON ks.idK = k.idK
-        WHERE k.name = '$kc'
+        WHERE k.name LIKE '%$kc%'
         ORDER BY 1 ASC " );
     }
 
