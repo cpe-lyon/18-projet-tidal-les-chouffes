@@ -10,7 +10,7 @@
 
 Le module TIDAL (Techniques de l’Internet Dynamique et Architecture Logicielle) est un module qui nous a permit d'utiliser et de montée en compétences sur les technologies et concepts du web appris lors des précédents cours à travers le développement d'une application de gestion de médécine chinoise nommé : Assopuncture 
 
-Les technos et concepts utilisées sont :
+## Technologies et concepts utilisés
     - PHP (pour le développement du backend)
     - HTML, CSS, Bootstrap et Javascript (pour le développement du frontend)
     - PostgreSQL (pour la base de données)
