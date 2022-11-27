@@ -24,14 +24,14 @@ Il faut tout d'abord installer le serveur de base de données (PostgreSQL) et le
 Lorsque l'on pull depuis le Git, faire un Ctrl + Shift + P : SFTP Local Sync Local -> Remote
 
 ### Dans le serveur Web faire :
-- Pour activer EngineRewrite
-      -> sudo /usr/sbin/a2enmod rewrite
-      -> systemctl restart apache2
+#### Pour activer EngineRewrite
+      - sudo /usr/sbin/a2enmod rewrite
+      - systemctl restart apache2
 
-- Mettre Allowoverride à all 
-     -> sudo nano /etc/apache2/apache2.conf
-     -> Dans Directory /var/www faire : AllowOverride All
-     -> sudo service apache2 restart
+#### Mettre Allowoverride à all 
+     - sudo nano /etc/apache2/apache2.conf
+     - Dans Directory /var/www faire : AllowOverride All
+     - sudo service apache2 restart
 
 # Membres du groupe
     - Enzo LOUNI
