@@ -1,6 +1,7 @@
 # Sommaire
     - Introduction
     - Informations d'installation/exécution
+    - Structure MVC
     - Membres du groupe
     - Mention de tous les éléments qui ont changé depuis la pré-évaluation en dernier séance
     - Résumé des difficultés rencontrés
@@ -34,6 +35,28 @@ Lorsque l'on pull depuis le Git, faire un Ctrl + Shift + P : SFTP Local Sync Loc
      - sudo service apache2 restart
 #### Voir les erreurs côté serveur (lancé la commande suivante)
     - sudo tail -F /var/log/apache2/error.log
+
+# Structure MVC
+
+#### Répertoire app (Contient le controleur + les Models + etc.)
+    ### Répertoire Controllers (Deux classes controleurs + un fichier Load_data destiné à AJAX)
+    ### Répertoire Models (Quatre classes liées aux Models)
+    ### Répertoire NotFoundException (Une class pour la page d'erreur)
+    ### Répertoire Validation (Une class pour la vérification des données entrées par l'utilisateur)
+    
+#### Répertoire bdd (Une class pour la connection à la base de données)
+
+#### Répertoire public (On trouve le point d'entré à l'application : fichier index, et les répertoires css - images - js)
+
+#### Répertoire routes (Deux classes pour gérer les routes de l'application)
+
+#### Répertoire views (Répertoires pages de l'application)
+    ### Répertoire auths (pages connection et inscription)
+    ### Répertoire errors (page erreur)
+    ### Répertoire layout (pages header, footer de la page rechercheParMotClé, et page main point d'entré )
+    ### Répertoire pages (pages accueil et rechercheParMotClé)
+    
+#### N.B : Pour la page d'accueil le header et footer sont gérés par JavaScript
 
 # Membres du groupe
     - Enzo LOUNI
