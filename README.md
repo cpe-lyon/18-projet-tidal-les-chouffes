@@ -40,7 +40,7 @@ Lorsque l'on pull depuis le Git, faire un Ctrl + Shift + P : SFTP Local Sync Loc
     - Clovis STACHOWIAK
 
 # Mention de tous les éléments qui ont changé depuis la pré-évaluation en dernier séance
-
+Comme dit à l'oral, nous avons implémenté l'ensemble des filtres.
 
 # Résumé des difficultés rencontrés
 
