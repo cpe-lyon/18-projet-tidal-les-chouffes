@@ -24,7 +24,7 @@
             </label>
             <label class="filter">
                 Méridien
-                <select>
+                <select name="brand" id="brand">  
                     <option selected>Veuillez sélectionner</option>
                     <?php foreach ($params['meridiens'] as $meridien) : ?>
                         <option value="<?= $meridien->nom ?>"><?= $meridien->nom ?></option>
@@ -33,7 +33,7 @@
             </label>
             <label class="filter">
                 Type
-                <select>
+                <select >
                 <option selected>Veuillez sélectionner</option>
                     <?php foreach ($params['listPathos'] as $patho) : ?>
                         <option value="<?= $patho->type ?>"><?= $patho->type ?></option>
@@ -43,79 +43,58 @@
         </div>
     </section>
 
-    <table class="table table-striped table-bordered" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col">Pathologies</th>
-                <th scope="col">Méridiens</th>
-                <th scope="col">Symptomes</th>
 
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($params['listPathos'] as $patho) : ?>
+
+
+    <div class="container-fluid mt-5" id="dynamic_content"> 
+        <table id="example" class="table table-striped" style="width:100%">
+            <thead>
                 <tr>
-                    <th scope="row"><?= $patho->idp ?></th>
-                    <td><?php echo (ucfirst($patho->desc)) ?></td>
-                    <td>Meridien</td>
-                    <td>
-                    <table class="table table-bordered">
-                        <tr>
-                        <?php foreach ($params['listSymptpathos'] as $symptpatho) : ?>
-                                <?php foreach ($symptpatho as $sympt) : ?>
-                                    <?php if ($sympt->idp == $patho->idp) { ?>
-                                        <td<?= ucfirst($sympt->desc) ?></td>
-                                    <?php } ?>
-                                <?php endforeach ?>
-                        <?php endforeach ?>
-                        </tr>
-                    </table>
-                                    </td>
+                    <th class="text-center text-dark bg-info" scope="col">#id</th>
+                    <th class="text-center text-dark bg-warning" scope="col">Pathologie</th>
+                    <th class="text-center text-dark bg-secondary" scope="col">Méridiens</th>
+                    <th class="text-center text-dark bg-success" scope="col">Symptomes</th>
                 </tr>
-            <?php endforeach ?>
-        </tbody>
-    </table>
-
-
-    <div class="container-fluid">
-        <div class="row row-cols-1 row-cols-md-6 g-6">
+            </thead>
 
             <?php foreach ($params['listPathos'] as $patho) : ?>
-                <div class="col">
+            <tbody>
+                <tr>
 
-                    <div class="card border-dark" style="width: 18rem;">
+                    <th class="text-justify text-dark bg-info"> <?= $patho->idp ?> </td>
 
-                        <img src="https://cdn.iconscout.com/icon/free/png-256/gallery-187-902099.png" class="card-img-top img-fluid" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"> <?= ucfirst($patho->desc) ?> </h5>
-                            <p class="card-text"> <?= $patho->idp ?> </p>
-                        </div>
+                    <td class="text-justify text-dark bg-warning"> <?= ucfirst($patho->desc) ?> </td>
 
-                        <div class="card-body">
-                            <h5 class="card-title">Méridiens : </h5>
-                        </div>
-
-                        <h5 class="card-title">Symptomes : </h5>
-
+                    <td class="text-justify text-dark bg-secondary">
+                        Méridiens
+                    </td>
+                    
+                    <td class="text-justify text-dark bg-success">
                         <ul class="list-group list-group-flush">
                             <?php foreach ($params['listSymptpathos'] as $symptpatho) : ?>
                                 <?php foreach ($symptpatho as $sympt) : ?>
-
                                     <?php if ($sympt->idp == $patho->idp) { ?>
-                                        <li class="list-group-item"> <?= ucfirst($sympt->desc) ?> </li>
+                                        <li class="list-group-item bg-light"> <?= ucfirst($sympt->desc) ?> </li>
                                     <?php } ?>
                                 <?php endforeach ?>
                             <?php endforeach ?>
                         </ul>
-
-                    </div>
-
-                </div>
-
+                    </td>
+                    
+                </tr>
+            </tbody>
             <?php endforeach ?>
-        </div>
 
+            <tfoot>
+                <tr>
+
+                    <th class="text-center text-dark bg-info" scope="col">#id</th>
+                    <th class="text-center text-dark bg-warning" scope="col">Pathologie</th>
+                    <th class="text-center text-dark bg-secondary" scope="col">Méridiens</th>
+                    <th class="text-center text-dark bg-success" scope="col">Symptomes</th>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 
 
@@ -123,6 +102,26 @@
 
     <div id="footer"></div>
 
-
+    
 
 </div>
+
+
+<script>  
+ $(document).ready(function(){  
+
+      $('#brand').change(function(){  
+           var brand_id = $(this).val();  
+           $.ajax({   
+                url:"../app/Controllers/Load_data.php",
+                method:"GET",  
+                data:{brand_id:brand_id},  
+                success:function(data){  
+                     $('#dynamic_content').html(data);  
+                }  
+           });  
+      }); 
+       
+ });  
+ </script> 
+
