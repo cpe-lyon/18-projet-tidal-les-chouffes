@@ -12,7 +12,7 @@ Le module TIDAL (Techniques de l’Internet Dynamique et Architecture Logicielle
 
 ### Technologies et concepts utilisés
     - PHP (pour le développement du backend)
-    - HTML, CSS, Bootstrap et Javascript (pour le développement du frontend)
+    - HTML, CSS, Bootstrap Javascript et AJAX (pour le développement du frontend)
     - PostgreSQL (pour la base de données)
     - MVC (pour la structuration de l'application en logique Model View Controller)
     - Web Service (pour la mise en place de l'API)
