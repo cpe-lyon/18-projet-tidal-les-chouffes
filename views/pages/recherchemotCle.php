@@ -10,8 +10,7 @@
 
     <section class="">
 
-        <p> Page Recherche Patho par mot clé </p>
-        
+        <h4 classe='md-1'> Grace à vos privilèges d'utilisateur, vous avez accès à la recherche par mots-clés </h4>
 
         <form class="text-center" method="GET" action="/recherchemotCle">
             <div class="row text-center">
@@ -23,8 +22,8 @@
                 </div>
             </div>
         </form>
-        
-        <table class="table">
+
+        <table class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th scope="col">Pathologies</th>
@@ -34,16 +33,14 @@
             </thead>
             <tbody>
                 <?php foreach ($params['keywords'] as $p) : ?>
-                <tr>
-                    <!--<th scope="row">1</th>-->
-                    
-                    <td><?php echo(ucfirst($p->desc)) ?></td>
-                    <td><?php echo(ucfirst($p->name)) ?></td>
-                </tr>
-                <?php endforeach ?> 
+                    <tr>
+                        <td><?php echo (ucfirst($p->desc)) ?></td>
+                        <td><?php echo (ucfirst($p->name)) ?></td>
+                    </tr>
+                <?php endforeach ?>
             </tbody>
         </table>
-                
+
 
 
     </section>
