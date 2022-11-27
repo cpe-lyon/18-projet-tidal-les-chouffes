@@ -7,19 +7,12 @@ class Secure {
 
     private $data;
 
-    /* public function __construct($data)
-    {
-        $this->data = $data;
-    } */
-
-
     public function secure($data){
         $data = trim($data);
         $data = stripslashes($data);
         $data = strip_tags($data);
         return $data;
     }
-
 
     
 }

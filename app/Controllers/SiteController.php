@@ -5,7 +5,6 @@ namespace App\Controllers;
  
 use App\Models\Pathologie;
 use App\Models\Meridien;
-/*use App\Models\Symptome;*/
 use App\Models\User;
 use App\Validation\Secure;
 
@@ -25,20 +24,15 @@ class SiteController extends Controller {
         $meridien = new Meridien($this->getDB()); 
         $meridiens = $meridien->meridien(); 
 
-        /*$symptome = new Symptome($this->getDB()); 
-        $symptomes = $symptome->symptome();*/ 
 
         $listPathos = [];
         $listSymptpathos = [];
         
         foreach($pathos as $patho)
         {   
-            
             $symptpathos = $patho->symptpatho($patho->idp);
-
             array_push($listPathos, $patho);
             array_push($listSymptpathos, $symptpathos);
-    
         }
 
 
@@ -71,7 +65,6 @@ class SiteController extends Controller {
         $login = new User($this->getDB()); 
         $verifdata = new Secure();
 
-        
         $userbdd = $login->getByUsername($verifdata->secure($_POST['username']));     
         $pass = $verifdata->secure($_POST['password']);
 
@@ -175,23 +168,6 @@ class SiteController extends Controller {
     }
 
 
-
-    /**
-     * @Route("/filtersChanged")
-    */
-    /*public function filtersChanged() 
-    {
-
-        
-        $filter = new Pathologie($this->getDB()); 
-        $filters = $filter->filtersChanged();
-      
-        
-
-
-    }*/
-
-
     /**
      * @Route("/logout")
     */
@@ -200,8 +176,6 @@ class SiteController extends Controller {
         session_destroy();
         return header('Location: /');
     }
-
-
 
 
 

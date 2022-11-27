@@ -1,5 +1,7 @@
 <?php  
  
+  // Config BDD pour mieux gérer les appels AJAX
+
   $host = 'localhost';
   $port = "5432";
   $dbname = 'acudb';
@@ -14,55 +16,96 @@
     echo $e->getMessage();
   }
 
-  
-  $data_selected = $_GET["brand_id"];
 
-  var_dump(trim($data_selected, '"'));
+  $data_selected = $_GET["brand_mrd"];
+
+
+$output = '';  
  
- $output = '';  
- if(isset($_GET["brand_id"]))  
- {  
-      if($_GET["brand_id"] != '')  
-      {  
+     if(isset($data_selected))  
+     {  
 
-
-         
-            
-
-         $sql_patho = ' SELECT * FROM meridien WHERE nom = '.$data_selected.' '; 
-
-         // $sql_patho = " SELECT * FROM meridien WHERE nom = 'Estomac' "; 
-
-            // $sql_patho = "SELECT * FROM patho WHERE type = '".$_GET["brand_id"]."'"; 
           
-      }  
-      else  
-      {  
-           $sql_patho = "SELECT * FROM patho";  
-      }  
 
-      $result_patho = $connect->query($sql_patho);
+          if( $data_selected != '')    
+          {  
 
-      foreach($result_patho as $res){ 
+               $sql_filter = " SELECT p.idp, p.desc, s.desc, m.nom FROM patho p    
+               JOIN symptpatho sp ON p.idp = sp.idp 
+               JOIN symptome s ON sp.ids = s.ids 
+               JOIN meridien m ON p.mer = m.code
+                    WHERE m.nom = '$data_selected' 
+                    OR p.type = '$data_selected'
+                    OR s.desc = '$data_selected'
+               ORDER BY 1 ASC " ; 
+               
+          }  
+          else  
+          {  
+               $sql_filter = "SELECT * FROM meridien";  
+          }  
 
-        $output .= '<div class="col">
+          $result_filter = $connect->query($sql_filter);
 
-           <div class="card border-dark">
+          foreach($result_filter as $res){ 
 
-                <div class="card-body">
-                    <h5 class="card-title"> '.ucfirst($res['nom']).' </h5>
-                    <p class="card-text"> '.$res['code'].' </p>
-                </div>
+               $output .= '<div class="container-fluid mt-5" id="dynamic_content"> 
 
-           </div>
-           
-           </div>'; 
+                    <table id="example" class="table table-striped" style="width:100%">
+                    <thead>
+                         <tr>
+                              <th class="text-center text-dark bg-info" scope="col">#id</th>
+                              <th class="text-center text-dark bg-warning" scope="col">Pathologie</th>
+                              <th class="text-center text-dark bg-secondary" scope="col">Méridiens</th>
+                              <th class="text-center text-dark bg-success" scope="col">Symptomes</th>
+                         </tr>
+                    </thead>
 
-      }  
-      echo $output;  
- }  
 
+                    
+                         <tbody>
+                         <tr>
+          
+                              <th class="text-justify text-dark bg-info"> '.$res['idp'].' </td>
+          
+                              <td class="text-justify text-dark bg-warning"> '.$res['desc'].' </td>
+          
+          
+                              
+                              <td class="text-justify text-dark bg-secondary">
 
+                                        '.ucfirst($res['nom']).'
+                                             
+                              </td>
+                              
+                              <td class="text-justify text-dark bg-success">
+                                   <ul class="list-group list-group-flush">
+                                        
+                                                  <li class="list-group-item bg-light"> '.ucfirst($res['desc']).' </li>
+                                             
+                                   </ul>
+                              </td>
+                              
+                         </tr>
+                         </tbody>
+                         
+
+                    <tfoot>
+                         <tr>
+
+                              <th class="text-center text-dark bg-info" scope="col">#id</th>
+                              <th class="text-center text-dark bg-warning" scope="col">Pathologie</th>
+                              <th class="text-center text-dark bg-secondary" scope="col">Méridiens</th>
+                              <th class="text-center text-dark bg-success" scope="col">Symptomes</th>
+                         </tr>
+                    </tfoot>
+                    </table>
+
+               </div>'; 
+
+          }  
+          echo $output;  
+     }  
 
 
 

@@ -9,7 +9,7 @@ $(function() {
                 `).join("")}
             </div>
             <div>
-                <a href="index.php" class="footer__brand">
+                <a href="/" class="footer__brand">
                     <img src="images/logo.png" alt="Logo de l'association"/>
                     <span>Assopuncture</span>
                 </a>

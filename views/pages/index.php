@@ -18,10 +18,11 @@
 
     <section class="inset">
         <div class="filters" id="filters">
+            
             <label class="filter">
                 Symptômes
-                <input type="text" placeholder="Search...">
-            </label>
+                <input type="text" placeholder="Search... (Implémentation Pas Faite)">
+            </label> 
             <label class="filter">
                 Méridien
                 <select name="brand" id="brand">  
@@ -33,8 +34,8 @@
             </label>
             <label class="filter">
                 Type
-                <select >
-                <option selected>Veuillez sélectionner</option>
+                <select>
+                <option selected>Veuillez sélectionner (Implémentation Pas Faite) </option>
                     <?php foreach ($params['listPathos'] as $patho) : ?>
                         <option value="<?= $patho->type ?>"><?= $patho->type ?></option>
                     <?php endforeach ?>
@@ -65,8 +66,21 @@
 
                     <td class="text-justify text-dark bg-warning"> <?= ucfirst($patho->desc) ?> </td>
 
+
+                    
                     <td class="text-justify text-dark bg-secondary">
-                        Méridiens
+                        <?php foreach ($params['listSymptpathos'] as $symptpatho) : ?>
+                            <?php foreach ($symptpatho as $sympt) : ?>
+
+                                <?php if ($sympt->code == $patho->mer) { ?>
+                                    
+                                    <?= ucfirst($sympt->nom) ?> 
+                                    
+                                <?php break; } ?>
+
+                            <?php endforeach ?>
+                        <?php endforeach ?>
+
                     </td>
                     
                     <td class="text-justify text-dark bg-success">
@@ -108,20 +122,22 @@
 
 
 <script>  
- $(document).ready(function(){  
 
-      $('#brand').change(function(){  
-           var brand_id = $(this).val();  
+    $(document).ready(function(){  
+
+        $('#brand').change(function(){  
+           var brand_mrd = $(this).val();  
            $.ajax({   
                 url:"../app/Controllers/Load_data.php",
                 method:"GET",  
-                data:{brand_id:brand_id},  
+                data:{brand_mrd:brand_mrd},  
                 success:function(data){  
                      $('#dynamic_content').html(data);  
                 }  
            });  
-      }); 
+        }); 
        
- });  
+    });  
+
  </script> 
 

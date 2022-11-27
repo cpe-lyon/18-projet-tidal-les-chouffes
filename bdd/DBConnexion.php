@@ -27,18 +27,15 @@ class DBConnexion {
     public function getPDO(): PDO
     {
 
-        // dsn : Data Source Name
+        // dsn = Data Source Name
         $dsn = "pgsql:host={$this->host};port={$this->port};dbname={$this->dbname};user=$this->username;password=$this->password";
 
         try {
-            
             return $this->pdo ?? $this->pdo = new PDO($dsn);
-
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-
-        
+  
     }
 
 

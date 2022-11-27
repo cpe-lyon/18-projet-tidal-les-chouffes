@@ -8,6 +8,10 @@ class Meridien extends Model {
 
     protected $table = 'meridien';
 
+
+    /**
+     * Requêtes pour obtenir touts les meridiens 
+    */
     public function meridien(): array     // : array permet de préciser que la fonction renvoie un array
     {
         return $this->query(" SELECT nom FROM {$this->table} ORDER BY 1 ASC " );

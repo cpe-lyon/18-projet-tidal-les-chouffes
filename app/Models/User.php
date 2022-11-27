@@ -11,14 +11,18 @@ class User extends Model {
     protected $tableUsers = 'users';
     
     
-    
+    /**
+     * Connection utilisateur 
+    */
     public function getByUsername(string $username): User   // : User permet de préciser que la fonction renvoie un table  User  
     {
         return $this->query(" SELECT * FROM {$this->tableUsers} WHERE username = ? ", [$username], true);  
     } 
 
 
-
+    /**
+     * Création d'un utilisateur 
+    */
     public function createUser(string $login, string $hashpwd) 
     {
 
