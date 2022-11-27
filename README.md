@@ -32,6 +32,8 @@ Lorsque l'on pull depuis le Git, faire un Ctrl + Shift + P : SFTP Local Sync Loc
      - sudo nano /etc/apache2/apache2.conf
      - Dans Directory /var/www faire : AllowOverride All
      - sudo service apache2 restart
+#### Voir les erreurs côté serveur (lancé la commande suivante)
+    - sudo tail -F /var/log/apache2/error.log
 
 # Membres du groupe
     - Enzo LOUNI
