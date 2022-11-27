@@ -46,4 +46,5 @@ Lorsque l'on pull depuis le Git, faire un Ctrl + Shift + P : SFTP Local Sync Loc
 
 
 # Webographie des ressources utilisées
-    - Clovis STACHOWIAK
+    - https://www.php.net/manual/fr/
+    - https://www.w3schools.com/
