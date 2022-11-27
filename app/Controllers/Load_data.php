@@ -30,14 +30,16 @@ $output = '';
           if( $data_selected != '')    
           {  
 
-               $sql_filter = " SELECT p.idp, p.desc, s.desc, m.nom FROM patho p    
-               JOIN symptpatho sp ON p.idp = sp.idp 
-               JOIN symptome s ON sp.ids = s.ids 
-               JOIN meridien m ON p.mer = m.code
+               $sql_filter = " SELECT distinct p.idp, p.desc AS descpatho, s.desc AS descsympto, m.nom FROM patho p    
+               JOIN symptpatho sp ON sp.idp = p.idp 
+               JOIN symptome s ON s.ids = sp.ids
+               JOIN meridien m ON p.mer = m.code 
                     WHERE m.nom = '$data_selected' 
                     OR p.type = '$data_selected'
                     OR s.desc = '$data_selected'
                ORDER BY 1 ASC " ; 
+
+               
                
           }  
           else  
@@ -47,7 +49,11 @@ $output = '';
 
           $result_filter = $connect->query($sql_filter);
 
+          
+
           foreach($result_filter as $res){ 
+
+               
 
                $output .= '<div class="container-fluid mt-5" id="dynamic_content"> 
 
@@ -68,7 +74,7 @@ $output = '';
           
                               <th class="text-justify text-dark bg-info"> '.$res['idp'].' </td>
           
-                              <td class="text-justify text-dark bg-warning"> '.$res['desc'].' </td>
+                              <td class="text-justify text-dark bg-warning"> '.$res['descpatho'].' </td>
           
           
                               
@@ -81,7 +87,7 @@ $output = '';
                               <td class="text-justify text-dark bg-success">
                                    <ul class="list-group list-group-flush">
                                         
-                                                  <li class="list-group-item bg-light"> '.ucfirst($res['desc']).' </li>
+                                                  <li class="list-group-item bg-light"> '.ucfirst($res['descsympto']).' </li>
                                              
                                    </ul>
                               </td>
