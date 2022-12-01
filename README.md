@@ -24,7 +24,7 @@ Afin d'organiser notre projet, nous avons utiliser un Trello : https://trello.co
 Il faut tout d'abord installer le serveur de base de données (PostgreSQL) et le serveur web sur une machine Debian.
 Lorsque l'on pull depuis le Git, faire un Ctrl + Shift + P : SFTP Local Sync Local -> Remote
 
-### Installation projet :
+### Installation du projet :
 #### Dans un terminal :
 	Faire -> git clone https://github.com/cpe-lyon/18-projet-tidal-les-chouffes.git
 #### Installer "composer" sur votre machine
